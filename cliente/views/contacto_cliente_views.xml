@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="pt_contacto_cliente_tree_view" model="ir.ui.view">
+        <field name="name">pt.contacto_cliente.tree.view</field> 
+        <field name="model">pt.contacto_cliente</field>
+        <field name="arch" type="xml">
+            <tree string="Contactos por cliente">
+                <field name="idCliente"/>
+                <field name="tipoContacto" optional="show"/>
+                <field name="fechaContacto" optional="show"/>
+                <field name="respuesta" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="pt_cliente_form_view" model="ir.ui.view">
+        <field name="name">pt.contacto_cliente.form.view</field> 
+        <field name="model">pt.contacto_cliente</field>
+        <field name="arch" type="xml">
+            <form string="ContactoCliente">
+                <sheet>
+                    <group>
+                            <field name="idCliente"/>
+                            <field name="tipoContacto" optional="show"/>
+                            <field name="fechaContacto" optional="show"/>
+                            <field name="respuesta" optional="show" widget="radio"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pt_contacto_cliente_action" model="ir.actions.act_window">
+        <field name="name">Contactos por cliente</field> 
+        <field name="res_model">pt.contacto_cliente</field>
+        <field name ="view_mode">tree,form</field>
+        <field name ="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Crear un nuevo contacto
+            </p>
+            </field>
+    </record>
+
+
+
+
+
+</odoo>

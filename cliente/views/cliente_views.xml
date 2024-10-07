@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pt_cliente_tree_view" model="ir.ui.view">
+        <field name="name">pt.cliente.tree.view</field> 
+        <field name="model">pt.cliente</field>
+        <field name="arch" type="xml">
+            <tree string="Cliente">
+                <field name="name"/>
+                <field name="telefono" optional="show"/>
+                <field name="celular" optional="show"/>
+                <field name="correo" optional="show"/>
+                <field name="pais_id" optional="show"/>
+                <field name="departamento_id" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="pt_cliente_search_form_view" model="ir.ui.view">
+        <field name="name">pt.cliente.search</field>
+        <field name="model">pt.cliente</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <search string="Cliente">
+            <field name="nombres" string="nombres"/>
+            <field name="apellidoPaterno" string="Apellido paterno"/>
+            <field name="apellidoMaterno" string="Apellido materno"/>
+            <field name="DNI" string="DNI"/>
+            </search>
+        </field>
+    </record>
+    
+ 
+
+    <record id="pt_cliente_form_view" model="ir.ui.view">
+        <field name="name">pt.cliente.form.view</field> 
+        <field name="model">pt.cliente</field>
+        <field name="arch" type="xml">
+            <form string="Cliente">
+            <sheet>
+                    <div class="container">
+                        <div class="row">
+                                <group>
+                                    <group>
+                                        <field name="nombres" placeholder="Nombres"/>
+                                        <field name="apellidoPaterno" placeholder="Apellido paterno"/>
+                                        <field name="apellidoMaterno" placeholder="Apellido materno"/>
+                                        <field name="DNI" placeholder="DNI"/>
+                                        <field name="fechaNacimiento" />
+                                        <field name="telefono" placeholder="Teléfono"/>
+                                    </group>
+                                    <group>
+                                        <field name="celular" placeholder="Celular"/>
+                                        <field name="correo" placeholder="Correo electrónico"/>
+                                        <field name="pais_id"/>
+                                        <field name="departamento_id"/>
+                                    </group>
+                                    <div>
+                                        <group>
+                                            <field name="notas" placeholder="Agregar nota..."/>
+                                        </group>
+                                    </div>
+                                </group>
+                        </div>
+                        <div class="row">
+                            <notebook>
+
+                                <page name="contacto" string="Contacto">
+                                    <field name="idsContacto" string="Contactos del cliente">
+                                        <tree >
+                                            <field name="idCliente" column_invisible="True"/>
+                                            <field name="tipoContacto"/>
+                                            <field name="fechaContacto"/>
+                                            <field name="respuesta"/>       
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </div>
+                    </div>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pt_cliente_action" model="ir.actions.act_window">
+        <field name="name">Cliente</field> 
+        <field name="res_model">pt.cliente</field>
+        <field name ="view_mode">tree,form</field>
+        <field name ="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Crear un nuevo cliente
+            </p>
+            </field>
+    </record>
+
+
+    
+        <menuitem   id="menu_clinica_root"
+                name="COS"
+                sequence="35"/>
+
+
+    <menuitem   id="menu_cliente_principal"
+                name="Cliente"
+                parent="menu_clinica_root"/>
+
+
+    <menuitem   id="pt_cliente_menu"
+                action="pt_cliente_action"
+                parent="menu_cliente_principal"
+                name="Cliente"/>
+
+    <menuitem   id="pt_contacto_cliente"
+                action="pt_contacto_cliente_action"
+                parent="menu_cliente_principal"
+                name="Contactos del cliente"/>
+    
+
+
+
+
+</odoo>
