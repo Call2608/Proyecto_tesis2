@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="module_marketing_automation_category" model="ir.module.category">
+        <field name="name">Marketing y Campanias</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="base.default_user" model="res.users">
+        <field name="groups_id" eval="[(4, ref('marketing_automation.group_marketing_automation_user'))]"/>
+    </record>
+
+</odoo>
