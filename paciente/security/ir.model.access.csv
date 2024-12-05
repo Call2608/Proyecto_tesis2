@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pt_paciente,pt.paciente,model_pt_paciente,base.group_user,1,1,1,1
+access_pt_cita_paciente,pt.cita_paciente,model_pt_cita_paciente,base.group_user,1,1,1,1
+access_pt_diagnostico,pt.diagnostico,model_pt_diagnostico,base.group_user,1,1,1,1
+access_pt_doctor,pt.doctor,model_pt_doctor,base.group_user,1,1,1,1

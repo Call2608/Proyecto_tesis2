@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pt_paciente_tree_view" model="ir.ui.view">
+        <field name="name">pt.paciente.tree.view</field> 
+        <field name="model">pt.paciente</field>
+        <field name="arch" type="xml">
+            <tree string="Paciente" delete="false">
+                <field name="nombres"/>
+                <field name="edad" optional="show"/>
+                <field name="sexo" optional="show"/>
+                <field name="correo" optional="show"/>
+                <field name="telefono" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="pt_paciente_search_form_view" model="ir.ui.view">
+        <field name="name">pt.paciente.search</field>
+        <field name="model">pt.paciente</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <search string="Paciente">
+            <field name="nombres" string="nombres"/>
+            <field name="apellidoPaterno" string="Apellido paterno"/>
+            <field name="apellidoMaterno" string="Apellido materno"/>
+            <field name="DNI" string="DNI"/>
+            </search>
+        </field>
+    </record>
+    
+ 
+
+    <record id="pt_paciente_form_view" model="ir.ui.view">
+        <field name="name">pt.paciente.form.view</field> 
+        <field name="model">pt.paciente</field>
+        <field name="arch" type="xml">
+            <form string="Paciente" delete="false">
+            <sheet>
+                    <div class="container">
+                        <div class="row">
+                                <group>
+                                    <group>
+                                        <field name="nombres" placeholder="Nombres"/>
+                                        <field name="apellidoPaterno" placeholder="Apellido paterno"/>
+                                        <field name="apellidoMaterno" placeholder="Apellido materno"/>
+                                        <field name="DNI" placeholder="DNI"/>
+                                        <field name="sexo" />
+                                    </group>
+                                    <group>
+                                        <field name="fechaNacimiento" />
+                                        <field name="edad"/>
+                                        <field name="telefono" placeholder="Teléfono"/>
+                                        <field name="correo" placeholder="Correo Electrónico"/>
+                                        <button type="object" name="go_to_client_view" string="Ver perfil de cliente" icon="fa-search"/>
+                                    </group>
+                                    <div>
+                                        <group>
+                                            <div class="row">
+                                            <field name="notas" placeholder="Agregar nota..."/>
+                                            </div>
+                                        </group>
+                                    </div>
+                                </group>
+                        </div>
+                        <div class="row">
+                            <notebook>
+
+                                <page name="cita" string="Citas">
+                                    <field name="idsCitas" string="Citas">
+                                        <tree >
+                                            <field name="idPaciente" column_invisible="True"/>
+                                            <field name="fechaCita"/>
+                                            <field name="doctor"/>
+                                            <field name="servicio"/>       
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </div>
+                    </div>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pt_paciente_action" model="ir.actions.act_window">
+        <field name="name">Paciente</field> 
+        <field name="res_model">pt.paciente</field>
+        <field name ="view_mode">tree,form</field>
+        <field name ="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Crear un nuevo paciente
+            </p>
+            </field>
+    </record>
+
+
+    
+    <menuitem   id="menu_paciente_root"
+                name="COSP"
+                sequence="35"/>
+
+
+    <menuitem   id="menu_paciente_principal"
+                name="Paciente"
+                parent="menu_paciente_root"/>
+
+
+    <menuitem   id="pt_paciente_menu"
+                action="pt_paciente_action"
+                parent="menu_paciente_principal"
+                name="Vista del paciente"/>
+
+    <menuitem   id="pt_cita_paciente_menu"
+                action="pt_cita_paciente_action"
+                parent="menu_paciente_principal"
+                name="Citas del paciente"/>
+    
+
+
+
+
+</odoo>

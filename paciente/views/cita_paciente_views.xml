@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="pt_cita_paciente_tree_view" model="ir.ui.view">
+        <field name="name">pt.cita_paciente.tree.view</field> 
+        <field name="model">pt.cita_paciente</field>
+        <field name="arch" type="xml">
+            <tree string="Citas por paciente">
+                <field name="idPaciente"/>
+                <field name="servicio" optional="show"/>
+                <field name="doctor" optional="show"/>
+                <field name="fechaCita" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="pt_cita_paciente_form_view" model="ir.ui.view">
+        <field name="name">pt.cita_paciente.form.view</field> 
+        <field name="model">pt.cita_paciente</field>
+        <field name="arch" type="xml">
+            <form string="CitaPaciente">
+                <sheet>
+                    <div class="container">
+                        <div class="row">
+                            <group>
+                                    <field name="idPaciente"/>
+                                    <field name="doctor" optional="show"/>
+                                    <field name="servicio" optional="show"/>
+                                    <field name="fechaCita" optional="show"/>
+                                    <field name="horaCita" widget="float_time"/>
+                                    <field name="signos" optional="show"/>
+                                    <field name="examen" optional="show"/>
+                                    <field name="antecedentes" optional="show"/>
+                            </group>
+                        </div>
+                        <div class="row">
+                            <notebook>
+
+                                <page name="diagnostico" string="Diagnósticos de cita">
+                                    <field name="idsDiagnostico" string="Diagnósticos">
+                                        <tree >
+                                            <field name="nombreDiagnostico"/>
+                                            <field name="codigoDiagnostico"/>  
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pt_cita_paciente_action" model="ir.actions.act_window">
+        <field name="name">Citas por paciente</field> 
+        <field name="res_model">pt.cita_paciente</field>
+        <field name ="view_mode">tree,form</field>
+        <field name ="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Crear una nueva cita
+            </p>
+            </field>
+    </record>
+
+
+
+
+
+</odoo>
